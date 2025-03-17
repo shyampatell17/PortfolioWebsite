@@ -32,6 +32,15 @@ const connectDescription = marked.parse(aboutPageContent.connect.description)
             <Icon name="mdi:file-document-outline" class="w-5 h-5" />
             {aboutPageContent.about.resume.label}
           </a>
+
+          <a 
+            href={aboutPageContent.about.coverLetter.url}
+            target="_blank"
+            class="inline-flex items-center gap-2 glass-card px-6 py-3 text-white hover:scale-105 transition-all duration-300 mt-4"
+          >
+            <Icon name="mdi:file-document-outline" class="w-5 h-5" />
+            {aboutPageContent.about.coverLetter.label}
+          </a>
         </div>
         
         <div class="relative">
@@ -44,6 +53,12 @@ const connectDescription = marked.parse(aboutPageContent.connect.description)
               class="w-full h-full object-cover"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          </div>
+          <div class="quote-container mt-6 p-4 glass-card rounded-lg">
+            <p class="quote-text text-lg text-blue-300 leading-relaxed">
+              Success is not the key to happiness. Happiness is the key to success. If you love what you are doing, you will be successful.
+            </p>
+            <p class="quote-author text-sm text-gray-400 mt-3 text-right">― Albert Schweitzer</p>
           </div>
         </div>
       </div>
@@ -112,5 +127,36 @@ const connectDescription = marked.parse(aboutPageContent.connect.description)
   
   .prose a:hover {
     color: #93c5fd;
+  }
+
+  .quote-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .quote-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .quote-text {
+    font-style: italic;
+    position: relative;
+    padding: 0 10px;
+  }
+
+  .quote-text::before,
+  .quote-text::after {
+    content: '"';
+    font-family: Georgia, serif;
+    font-size: 1.5em;
+    color: #60a5fa;
+  }
+
+  .quote-author {
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
   }
 </style>

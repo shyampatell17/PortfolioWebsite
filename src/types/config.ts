@@ -59,6 +59,10 @@ export type AboutPageContent = {
       url: string;
       label: string;
     };
+    coverLetter: {
+      url: string;
+      label: string;
+    };
   };
   work: {
     description: string;

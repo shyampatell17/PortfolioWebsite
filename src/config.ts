@@ -119,13 +119,13 @@ export const homePageContent: HomePageContent = {
         },
         {
           title: "Project Report",
-          url: "/files/final-report.pdf",
+          url: "/files/PR.docx",
           icon: "mdi:file-chart-outline"
         },
         {
           title: "Project Plan",
           url: "/files/Project_Plan.docx",
-          icon: "mdi:presentation"
+          icon: "mdi:file-chart-outline"
         },
         {
           title: "Requirements Analysis & Design",
@@ -134,7 +134,7 @@ export const homePageContent: HomePageContent = {
         },
         {
           title: "Status Report",
-          url: "/files/Status_Report.docx",
+          url: "/files/Status_Reports.docx",
           icon: "mdi:file-document-outline"
         }
       ]
@@ -164,6 +164,10 @@ Beyond coding, I actively engage in the tech community through volunteering and 
     resume: {
       url: "/Shyam_Resume.pdf",
       label: "View My Resume"
+    },
+    coverLetter: {
+      url: "/Shyam_Cover_Letter.pdf",
+      label: "View My Cover Letter"
     }
   },
   work: {
@@ -225,7 +229,7 @@ export const projectsPageContent: ProjectPageContent = {
       description: "A minimalistic lofi music streaming website designed to help users focus while studying or working. Featuring curated playlists of relaxing beats and ambient sounds.",
       image: "/lofi.png",
       year: "2024",
-      url: "https://github.com/shyampatell17/lofi-study",
+      url: "https://github.com/shyampatell17/LoFi-Study-Web",
     },
     {
       title: "Flappy Bird - Android Game",
