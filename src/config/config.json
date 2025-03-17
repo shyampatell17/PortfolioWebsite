@@ -1,0 +1,28 @@
+{
+  "projects": [
+    {
+      "title": "Flappy Bird - Android Game",
+      "description": "A modern implementation of the classic Flappy Bird game developed for Android using Java. Features include:\n\n• Custom physics engine for smooth bird movement\n\n• Progressive difficulty scaling\n\n• Local high score tracking\n\n• Responsive touch controls",
+      "link": "https://github.com/shyampatell17/COMP3074-FinalProject-FlappyBird",
+      "image": "/flappy.avif"
+    },
+    {
+      "title": "GBC Travel - Trip Planning Platform",
+      "description": "A comprehensive travel planning platform built for GBC students. Key features include:\n\n• Interactive trip planning interface\n\n• Real-time weather updates\n\n• Collaborative itinerary creation\n\n• Budget tracking and expense management",
+      "link": "https://github.com/shyampatell17/GBC_Travel-Group-113",
+      "image": "/travel.jpeg"
+    },
+    {
+      "title": "FileDonutt - P2P File Sharing",
+      "description": "A peer-to-peer file sharing platform powered by WebTorrent technology. Key features include:\n\n• Direct file transfers without server storage\n\n• Support for files up to 1TB\n\n• Real-time transfer progress\n\n• Secure end-to-end encryption",
+      "link": "https://github.com/shyampatell17/filedonutt",
+      "image": "/filedonut.png"
+    },
+    {
+      "title": "LoFi Study - Music Player",
+      "description": "A minimalist LoFi music player designed for productive study sessions. Features include:\n\n• Curated LoFi music collection\n\n• Customizable study timers\n\n• Background noise mixing\n\n• Focus mode with ambient lighting",
+      "link": "https://github.com/shyampatell17/lofi-study",
+      "image": "/lofi.png"
+    }
+  ]
+} 

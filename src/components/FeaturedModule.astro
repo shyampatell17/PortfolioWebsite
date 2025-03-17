@@ -1,0 +1,63 @@
+---
+import type { FeaturedModule } from "../types/config";
+
+interface ProjectLink {
+  title: string;
+  url: string;
+  icon: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  links?: ProjectLink[];
+  files?: ProjectLink[];
+}
+
+const { title, description, links, files } = Astro.props;
+---
+
+<div class="glass-card p-6 hover:scale-[1.02] transition-transform duration-300 bg-gray-900/50">
+  <h3 class="text-xl font-bold text-gradient mb-2">{title}</h3>
+  <p class="text-gray-300 mb-6">{description}</p>
+  
+  <div class="space-y-3">
+    {links && links.map((link) => (
+      <a
+        href={link.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-3 p-3 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors duration-200 group"
+      >
+        <svg class="w-5 h-5 text-blue-400" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M14,3V5H17.59L7.76,14.83L9.17,16.24L19,6.41V10H21V3M19,19H5V5H12V3H5C3.89,3 3,3.9 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V12H19V19Z" />
+        </svg>
+        <span class="text-white group-hover:text-blue-400 transition-colors">
+          {link.title}
+        </span>
+        <svg class="w-4 h-4 ml-auto transform group-hover:translate-x-1 transition-transform opacity-0 group-hover:opacity-100" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z" />
+        </svg>
+      </a>
+    ))}
+    
+    {files && files.map((file) => (
+      <a
+        href={file.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-3 p-3 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors duration-200 group"
+      >
+        <svg class="w-5 h-5 text-purple-400" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M13,9H18.5L13,3.5V9M6,2H14L20,8V20A2,2 0 0,1 18,22H6C4.89,22 4,21.1 4,20V4C4,2.89 4.89,2 6,2M11,4H6V20H18V9H11V4Z" />
+        </svg>
+        <span class="text-white group-hover:text-purple-400 transition-colors">
+          {file.title}
+        </span>
+        <svg class="w-4 h-4 ml-auto transform scale-0 group-hover:scale-100 transition-transform" viewBox="0 0 24 24">
+          <path fill="currentColor" d="M5,20H19V18H5M19,9H15V3H9V9H5L12,16L19,9Z" />
+        </svg>
+      </a>
+    ))}
+  </div>
+</div> 

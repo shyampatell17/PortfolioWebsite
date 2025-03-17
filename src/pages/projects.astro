@@ -1,0 +1,43 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { projectsPageContent } from "../config";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const { seo, subtitle, projects } = projectsPageContent;
+---
+
+<Layout seo={seo}>
+  <div class="container mx-auto py-16">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl lg:text-5xl font-bold mb-6">
+        <span class="text-gradient">My Projects</span>
+      </h1>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto">{subtitle}</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {projects.map((project, index) => (
+        <div data-aos="fade-up" data-aos-delay={index * 100}>
+          <ProjectCard
+            title={project.title}
+            description={project.description}
+            image={project.image}
+            url={project.url}
+            year={project.year}
+          />
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import AOS from 'aos';
+  import 'aos/dist/aos.css';
+  
+  AOS.init({
+    duration: 800,
+    once: true,
+    offset: 100,
+  });
+</script>

@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { certificatesPageContent } from "../config";
+
+const { seo, subtitle, certificates } = certificatesPageContent;
+---
+
+<Layout seo={seo}>
+  <div class="container mx-auto py-16">
+    <div class="text-center mb-16">
+      <h1 class="text-4xl lg:text-5xl font-bold mb-6">
+        <span class="text-gradient">Certificates</span>
+      </h1>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto">{subtitle}</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {certificates.map((certificate, index) => (
+        <div class="glass-card p-6" data-aos="fade-up" data-aos-delay={index * 100}>
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-xl font-bold text-gradient">{certificate.title}</h3>
+              <p class="text-gray-400">{certificate.issuer}</p>
+            </div>
+          </div>
+          <p class="text-gray-300 mb-4">{certificate.description}</p>
+          <div class="flex items-center justify-between">
+            <span class="text-sm text-gray-400">{certificate.date}</span>
+            {certificate.url && (
+              <a
+                href={certificate.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-blue-400 hover:text-blue-300 transition-colors duration-200 flex items-center gap-1 group"
+              >
+                <span>View Certificate</span>
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transform group-hover:translate-x-1 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<script>
+  import AOS from 'aos';
+  import 'aos/dist/aos.css';
+  
+  AOS.init({
+    duration: 800,
+    once: true,
+    offset: 100,
+  });
+</script> 

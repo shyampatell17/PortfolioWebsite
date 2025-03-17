@@ -1,0 +1,95 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import { homePageContent, identity } from "../config";
+import SocialLink from "../components/SocialLink.astro";
+import Link from "../components/Link.astro";
+import SocialLinkBox from "../components/SocialLinkBox.astro";
+import FeaturedModule from "../components/FeaturedModule.astro";
+
+const { seo, role, description, socialLinks, links, featuredModules } = homePageContent;
+---
+
+<Layout seo={seo}>
+  <div class="min-h-[90vh] flex items-center">
+    <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Left Column - Profile Image -->
+      <div class="relative order-2 lg:order-1">
+        <div class="aspect-square rounded-2xl overflow-hidden">
+          <img
+            src="/shyam.jpeg"
+            alt={identity.name}
+            class="w-full h-full object-cover"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+        </div>
+        <div class="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-md">
+          <div class="glass-card p-4 text-center">
+            <p class="text-xl text-gradient font-medium">{role}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column - Content -->
+      <div class="order-1 lg:order-2 text-center lg:text-left">
+        <h1 class="text-5xl lg:text-6xl font-bold mb-6">
+          <span class="text-gradient">Hello, I'm</span>
+          <br />
+          {identity.name}
+        </h1>
+        
+        <p class="text-xl text-gray-300 mb-8 max-w-2xl">
+          {description}
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+          {socialLinks.map((link) => (
+            <SocialLinkBox
+              title={link.title}
+              icon={link.icon}
+              url={link.url}
+            />
+          ))}
+        </div>
+
+        <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
+          {links.map((link) => (
+            <a
+              href={link.url}
+              class="glass-card px-6 py-3 text-white hover:scale-105 transition-all duration-300 flex items-center gap-2 group"
+            >
+              {link.title}
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 transform group-hover:translate-x-1 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Featured Modules Section -->
+  <section class="mt-32 mb-16">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold mb-4">Latest Updates</h2>
+      <p class="text-gray-300">Check out my capstone project resources and documentation</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      {featuredModules.map((module) => (
+        <FeaturedModule {...module} />
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+.gradient-overlay {
+  background: linear-gradient(
+    45deg,
+    rgba(59, 130, 246, 0.5),
+    rgba(147, 51, 234, 0.5)
+  );
+}
+</style>

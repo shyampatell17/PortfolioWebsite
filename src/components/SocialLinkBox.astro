@@ -1,0 +1,52 @@
+---
+import { Icon } from "astro-icon/components";
+import type { SocialLink } from "../types/config";
+
+const { title, icon, url, external = true } = Astro.props;
+---
+
+<a
+  href={url}
+  class="glass-card float-animation flex items-center gap-4 p-4 hover:scale-105 transition-all duration-300 group"
+  target={external ? "_blank" : "_self"}
+  rel="noopener noreferrer"
+  data-aos="fade-up"
+  data-aos-delay="150"
+>
+  <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center p-2 transform group-hover:rotate-12 transition-transform duration-300">
+    <Icon name={icon} width={24} height={24} class="text-white" />
+  </div>
+  <div>
+    <h3 class="font-medium text-gradient">{title}</h3>
+  </div>
+  <div class="ml-auto">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 transform group-hover:translate-x-1 transition-transform duration-200" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+    </svg>
+  </div>
+</a>
+
+<script>
+  import AOS from 'aos';
+  import 'aos/dist/aos.css';
+  
+  AOS.init({
+    duration: 800,
+    once: true,
+    offset: 50,
+  });
+</script>
+
+<style>
+  .gradient-bg {
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    background-size: 200% 200%;
+    animation: gradient 3s ease infinite;
+  }
+
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+</style>

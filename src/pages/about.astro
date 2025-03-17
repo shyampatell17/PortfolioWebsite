@@ -1,0 +1,116 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import { aboutPageContent } from "../config";
+import { Icon } from "astro-icon/components";
+import {marked} from "marked"
+
+const pageDescription = marked.parse(aboutPageContent.about.description)
+const workDescription = marked.parse(aboutPageContent.work.description)
+const connectDescription = marked.parse(aboutPageContent.connect.description)
+---
+
+<Layout seo={aboutPageContent.seo}>
+  <div class="container mx-auto py-16 px-4">
+    <!-- About Section -->
+    <section class="max-w-4xl mx-auto mb-20">
+      <h1 class="text-4xl lg:text-5xl font-bold mb-6">
+        <span class="text-gradient">About Me</span>
+      </h1>
+      
+      <div class="grid md:grid-cols-[2fr,1fr] gap-12 items-start">
+        <div class="space-y-6">
+          <div class="prose prose-invert max-w-none">
+            <Fragment set:html={pageDescription} />
+          </div>
+          
+          <a 
+            href={aboutPageContent.about.resume.url}
+            target="_blank"
+            class="inline-flex items-center gap-2 glass-card px-6 py-3 text-white hover:scale-105 transition-all duration-300 mt-4"
+          >
+            <Icon name="mdi:file-document-outline" class="w-5 h-5" />
+            {aboutPageContent.about.resume.label}
+          </a>
+        </div>
+        
+        <div class="relative">
+          <div class="aspect-square rounded-2xl overflow-hidden">
+            <Image
+              src={aboutPageContent.about.image.url}
+              alt={aboutPageContent.about.image.alt}
+              width={400}
+              height={400}
+              class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Work Experience Section -->
+    <section class="max-w-4xl mx-auto mb-20">
+      <h2 class="text-3xl font-bold mb-8">Work Experience</h2>
+      <div class="prose prose-invert max-w-none mb-8">
+        <Fragment set:html={workDescription} />
+      </div>
+      
+      <div class="space-y-8">
+        {aboutPageContent.work.items.map((item) => (
+          <div class="glass-card p-6 hover:scale-[1.02] transition-transform duration-300">
+            <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+              <div>
+                <h3 class="text-xl font-semibold text-gradient">{item.title}</h3>
+                <a href={item.company.url} target="_blank" class="text-blue-400 hover:text-blue-300 transition-colors">
+                  {item.company.name}
+                </a>
+              </div>
+              <span class="text-gray-400">{item.date}</span>
+            </div>
+            <div class="prose prose-invert max-w-none">
+              <p class="whitespace-pre-line">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Connect Section -->
+    <section class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold mb-8">Let's Connect</h2>
+      <div class="prose prose-invert max-w-none mb-8">
+        <Fragment set:html={connectDescription} />
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {aboutPageContent.connect.links.map((link) => (
+          <a
+            href={link.url}
+            target={link.external ? "_blank" : "_self"}
+            rel={link.external ? "noopener noreferrer" : undefined}
+            class="glass-card p-6 flex items-center gap-4 hover:scale-105 transition-all duration-300"
+          >
+            <Icon name={link.icon} class="w-6 h-6 text-blue-400" />
+            <span class="font-medium">{link.title}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  .prose {
+    color: #94a3b8;
+  }
+  
+  .prose a {
+    color: #60a5fa;
+    text-decoration: none;
+  }
+  
+  .prose a:hover {
+    color: #93c5fd;
+  }
+</style>
